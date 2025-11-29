@@ -9,7 +9,13 @@
 
 <h2>💩 <b>Kallu The Shit - Up!</b></h2>
 
-<button id="startBtn">Start</button>
+<!-- LEVEL SELECTION MENU -->
+<div id="level-select">
+    <h3>Select Level</h3>
+    <button id="level1Btn">Play Level 1</button>
+    <button id="level2Btn">Play Level 2</button>
+</div>
+
 <p>Score: <span id="score">0</span></p>
 
 <div id="game-area">
@@ -17,12 +23,14 @@
         <img id="boat" src="assets/boat.png">
         <img id="player" src="assets/player.jpg">
     </div>
-    <img id="food" src="assets/food.jpg" alt="food">
+
+    <img id="food" src="assets/food.jpg">
+    <img id="shark" src="assets/shark.png" style="display:none;">
 </div>
 
 <h2 id="finalMessage"></h2>
+<h3 id="levelMsg"></h3>
 
-<!-- Crows appear here -->
 <div id="crows"></div>
 
 <button id="refreshBtn" style="display:none;">Refresh / Play Again</button>
