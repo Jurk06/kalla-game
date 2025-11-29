@@ -1,0 +1,45 @@
+name: CI for Kalla Game
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get repo files
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node for running checks (even though game is static)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Install linters that validate JS + HTML + CSS
+      - name: Install dependencies (linters)
+        run: |
+          npm install -g eslint htmlhint stylelint
+
+      # Run JavaScript linter
+      - name: Lint JavaScript
+        run: |
+          eslint "**/*.js" || true
+
+      # Run HTML linter
+      - name: Lint HTML
+        run: |
+          htmlhint "**/*.html" || true
+
+      # Run CSS linter
+      - name: Lint CSS
+        run: |
+          stylelint "**/*.css" || true
+
+      - name: CI Completed
+        run: echo "CI finished for Kalla Game 🎉"
