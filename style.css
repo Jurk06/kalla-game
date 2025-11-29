@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#game-area {
+    width: 900px;
+    height: 250px;
+    border: 2px solid black;
+    margin: 20px auto;
+    position: relative;
+    background-image: url("assets/water.png");
+    background-size: cover;
+}
+
+/* boat + player stacked */
+#boatContainer {
+    width: 150px;
+    position: absolute;
+    left: 0;
+    top: 120px;
+}
+
+#boat {
+    width: 150px;
+}
+
+#player {
+    width: 60px;
+    position: absolute;
+    left: 45px;
+    top: -95px;
+    border-radius: 6px;
+}
+
+#food {
+    width: 110px;
+    position: absolute;
+    right: 40px;
+    top: 80px;
+}
+
+#finalMessage {
+    color: red;
+    font-size: 40px;
+    display: none;
+    margin-top: 15px;
+}
+
+#refreshBtn {
+    padding: 8px 18px;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+/* crow container */
+#crows {
+    display: none;
+    margin-top: 15px;
+}
+
+/* crow images */
+.crow-img {
+    width: 70px;
+    margin: 2px;
+}
