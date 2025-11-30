@@ -13,34 +13,41 @@ body {
     background-size: cover;
 }
 
-#level-select {
-    margin-top: 10px;
-}
+/* Level select */
+#level-select { margin-top: 10px; }
 #level-select button {
     padding: 10px 20px;
     margin: 5px;
     font-size: 18px;
 }
 
+/* Boat + Player */
 #boatContainer {
-    width: 150px;
+    width: 200px;
+    height: 200px;
     position: absolute;
     left: 0;
-    top: 120px;
+    top: 70px;
 }
 
 #boat {
-    width: 150px;
+    width: 200px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
 }
 
 #player {
-    width: 60px;
+    width: 75px;
     position: absolute;
-    left: 45px;
-    top: -95px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 130px;       /* player stands ABOVE boat */
     border-radius: 6px;
+    z-index: 3;
 }
 
+/* Food */
 #food {
     width: 110px;
     position: absolute;
@@ -48,38 +55,52 @@ body {
     top: 80px;
 }
 
+/* Flying crow (shark) */
 #shark {
     width: 140px;
     position: absolute;
-    top: 25px;           /* moved to top inside rectangle */
-    right: 0;            /* starts from right side */
+    top: 25px;
+    right: 0;
     display: none;
+    z-index: 4;
 }
 
-
+/* Messages */
 #finalMessage {
     color: red;
     font-size: 40px;
     display: none;
 }
-
 #levelMsg {
     font-size: 26px;
     margin-top: 6px;
     color: #006cff;
 }
 
+/* Celebration crows */
+#crows {
+    display: none;
+    margin-top: 10px;
+}
+.crow-img {
+    width: 55px;
+    margin: 2px;
+}
+
+/* Refresh */
 #refreshBtn {
     padding: 8px 18px;
     font-size: 17px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
-#crows {
-    display: none;
-    margin-top: 8px;
+/* ⭐ Player animation */
+@keyframes playerBounce {
+    0%   { transform: translate(-50%, 0); }
+    50%  { transform: translate(-50%, -12px); }
+    100% { transform: translate(-50%, 0); }
 }
-.crow-img {
-    width: 70px;
-    margin: 2px;
+
+.player-animate {
+    animation: playerBounce 0.7s infinite ease-in-out;
 }
