@@ -1,24 +1,87 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #000;
+    color: white;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    border: 1px solid #555;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.health-bar-container {
+    position: relative;
+    width: 100px;
+    height: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #555;
+}
+
+.health-bar {
+    height: 100%;
+    background: linear-gradient(to right, #e74c3c, #f39c12, #2ecc71);
+    transition: width 0.3s ease;
+}
+
+.health-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
 }
 
 #game-area {
     width: 900px;
     height: 250px;
-    border: 2px solid black;
+    border: 2px solid #555;
     margin: 20px auto;
     position: relative;
-    background-image: url("assets/water.png");
-    background-size: cover;
+    background: linear-gradient(to bottom, #1e5799, #207cca, #2989d8, #1e5799);
+    background-size: 400% 400%;
+    animation: waterFlow 8s ease infinite;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Level select */
+h2 {
+    color: white;
+}
+
 #level-select { margin-top: 10px; }
 #level-select button {
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 12px 24px;
+    margin: 10px;
     font-size: 18px;
+    border: 2px solid #2196F3;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Boat + Player */
@@ -92,6 +155,17 @@ body {
     padding: 8px 18px;
     font-size: 17px;
     margin-top: 15px;
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#refreshBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 /* ⭐ Player animation */
@@ -103,4 +177,230 @@ body {
 
 .player-animate {
     animation: playerBounce 0.7s infinite ease-in-out;
+}
+
+.pulse-animation {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+    }
+}
+
+/* Enhanced boat movement effects */
+#boatContainer {
+    transition: transform 0.1s ease-out;
+}
+
+/* Water animation */
+#game-area {
+    background-image: url("assets/water.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-x;
+    animation: waterMove 20s linear infinite;
+}
+
+@keyframes waterMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Enhanced game messages */
+#finalMessage {
+    color: red;
+    font-size: 40px;
+    display: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: messagePulse 2s infinite;
+}
+
+@keyframes messagePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#levelMsg {
+    font-size: 26px;
+    margin-top: 6px;
+    color: #006cff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Level selection buttons */
+#level-select button {
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 18px;
+    border: 2px solid #2196F3;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#level-select button:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+#level-select button:active {
+    transform: translateY(1px);
+}
+
+/* Power-up visual effects */
+.power-up {
+    border-radius: 50%;
+    border: 2px solid gold;
+}
+
+/* Moving obstacle animation */
+.obstacle {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Enhanced water background with animated waves */
+#game-area {
+    background: linear-gradient(to bottom, #1e5799, #207cca, #2989d8, #1e5799);
+    background-size: 400% 400%;
+    animation: waterFlow 8s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes waterFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating objects in water */
+.floating-object {
+    position: absolute;
+    opacity: 0.7;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.trash {
+    animation: drift 15s linear infinite;
+    background: radial-gradient(circle, #8B4513, #5D2906);
+}
+
+.bottle {
+    animation: drift 12s linear infinite, rotate 4s linear infinite;
+    background: linear-gradient(45deg, rgba(0, 100, 0, 0.5), rgba(0, 80, 0, 0.5));
+    border-radius: 5px 5px 20px 20px;
+}
+
+.plank {
+    animation: drift 18s linear infinite, float 3s ease-in-out infinite;
+    background: linear-gradient(45deg, #D2B48C, #A0522D);
+}
+
+@keyframes drift {
+    0% {
+        transform: translateX(900px) translateY(0px);
+    }
+    100% {
+        transform: translateX(-100px) translateY(0px);
+    }
+}
+
+@keyframes rotate {
+    0% { transform: translateX(900px) translateY(0px) rotate(0deg); }
+    100% { transform: translateX(-100px) translateY(0px) rotate(360deg); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Water particles/raindrops effect */
+#water-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.water-particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(250px);
+    }
+}
+
+/* Add some bubbles for underwater effect */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    animation: bubbleRise linear infinite;
+}
+
+@keyframes bubbleRise {
+    to {
+        transform: translateY(-150px) scale(1.5);
+    }
+}
+
+/* Add some fish swimming in the background */
+.fish {
+    position: absolute;
+    width: 40px;
+    animation: fishSwim linear infinite;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+@keyframes fishSwim {
+    0% {
+        transform: translateX(-50px);
+    }
+    100% {
+        transform: translateX(900px);
+    }
 }
