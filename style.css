@@ -30,39 +30,124 @@ body {
     top: 70px;
 }
 
-#boat {
+.boat-element {
     width: 200px;
+    height: 60px;
     position: absolute;
     bottom: 0;
     z-index: 2;
+    background: linear-gradient(to bottom, #8B4513, #A0522D, #8B4513);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 2px solid #5D2906;
 }
 
-#player {
-    width: 75px;
+.boat-element::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    right: 20px;
+    height: 20px;
+    background: linear-gradient(to bottom, #CD853F, #DEB887);
+    border-radius: 10px;
+}
+
+.player-element {
+    width: 50px;
+    height: 60px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 130px;       /* player stands ABOVE boat */
-    border-radius: 6px;
+    bottom: 60px;       /* player stands ABOVE boat */
     z-index: 3;
+    background: linear-gradient(to bottom, #4682B4, #5F9EA0);
+    border-radius: 50% 50% 40% 40%;
+    border: 2px solid #2F4F4F;
 }
 
-/* Food */
-#food {
-    width: 110px;
+.player-element::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 10px;
+    height: 15px;
+    background: #FFD700;
+    border-radius: 50%;
+}
+
+.player-element::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    width: 10px;
+    height: 15px;
+    background: #8B4513;
+    border-radius: 5px;
+}
+
+.food-element {
+    width: 70px;
+    height: 70px;
     position: absolute;
     right: 40px;
     top: 80px;
+    background: radial-gradient(circle, #FF6347, #DC143C);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.7);
+    border: 2px solid #B22222;
+    z-index: 3;
 }
 
-/* Flying crow (shark) */
-#shark {
-    width: 140px;
+.food-element::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 2px dashed white;
+    border-radius: 50%;
+}
+
+.shark-element {
+    width: 100px;
+    height: 50px;
     position: absolute;
     top: 25px;
     right: 0;
     display: none;
     z-index: 4;
+    background: linear-gradient(to right, #3B3B3B, #2B2B2B, #3B3B3B);
+    border-radius: 50% 10% 50% 10%;
+    border: 2px solid #1B1B1B;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.shark-element::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #1B1B1B;
+}
+
+.shark-element::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: -15px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #1B1B1B;
 }
 
 /* Messages */
